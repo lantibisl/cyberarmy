@@ -31,7 +31,7 @@ class SiswaController extends Controller
     {
         $formFields = $request->validate([
             'nama' => 'required',
-            'kelas' => 'required',
+            'id_kelas' => 'required',
             'matematika' => 'required',
             'kimia' => 'required',
             'fisika' => 'required',

@@ -6,11 +6,11 @@
     <br>
     Kelas: 
     {{-- <input type="text" name="kelas" required /> --}}
-    <select name="kelas" required>
+    <select name="id_kelas" required>
         <option value="" hidden selected></option>
-        <option value="3A">3A</option>
-        <option value="3B">3B</option>
-        <option value="3C">3C</option>
+        <option value="1">3A</option>
+        <option value="2">3B</option>
+        <option value="3">3C</option>
     </select>
     <br>
     <br>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('kelas');
+            $table->integer('id_kelas');
             $table->integer('matematika');
             $table->integer('kimia');
             $table->integer('fisika');
