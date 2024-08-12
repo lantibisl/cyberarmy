@@ -5,7 +5,6 @@
     <br>
     <br>
     Kelas: 
-    {{-- <input type="text" name="kelas" required /> --}}
     <select name="id_kelas" required>
         <option value="" hidden selected></option>
         <option value="1">3A</option>
