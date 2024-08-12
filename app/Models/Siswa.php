@@ -22,4 +22,10 @@ class Siswa extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'id_kelas');
+    }
+
 }

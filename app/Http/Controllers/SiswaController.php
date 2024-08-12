@@ -14,7 +14,21 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $siswa = Siswa::with('kelas')->orderByDesc('nilai')->get();
+
+        $kelas = Kelas::orderByDesc('nilai')->get();
+
+        $siswaBerdasarkanKelas = [];
+
+        foreach($kelas as $k) {
+            $siswaBerdasarkanKelas[$k->nama] = Siswa::where('id_kelas', $k->id)->get();
+        }
+
+        return view('daftarnilaisiswa', [
+        'siswa' => $siswa,
+        'kelas' => $kelas,
+        'siswaBerdasarkanKelas' => $siswaBerdasarkanKelas
+        ]);
     }
 
     /**
@@ -47,7 +61,7 @@ class SiswaController extends Controller
         $kelas->nilai += $formFields['nilai'];
         $kelas->save();
 
-        return redirect()->back();
+        return redirect('/');
     }
 
     /**
@@ -55,7 +69,9 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        //
+        $siswa = $siswa->load('kelas');
+        
+        return view('detailnilaisiswa', ['siswa' => $siswa]);
     }
 
     /**
