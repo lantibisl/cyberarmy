@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use App\Http\Requests\StoreSiswaRequest;
 use App\Http\Requests\UpdateSiswaRequest;
+use App\Models\Kelas;
 
 class SiswaController extends Controller
 {
@@ -41,6 +42,10 @@ class SiswaController extends Controller
         $formFields['nilai'] = ($formFields['matematika'] + $formFields['kimia'] + $formFields['fisika'] + $formFields['biologi']) / 4;
 
         Siswa::create($formFields);
+
+        $kelas = Kelas::find($formFields['id_kelas']);
+        $kelas->nilai += $formFields['nilai'];
+        $kelas->save();
 
         return redirect()->back();
     }
