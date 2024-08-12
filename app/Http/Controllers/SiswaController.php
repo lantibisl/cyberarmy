@@ -21,7 +21,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambahnilaisiswa');
     }
 
     /**
@@ -29,7 +29,20 @@ class SiswaController extends Controller
      */
     public function store(StoreSiswaRequest $request)
     {
-        //
+        $formFields = $request->validate([
+            'nama' => 'required',
+            'kelas' => 'required',
+            'matematika' => 'required',
+            'kimia' => 'required',
+            'fisika' => 'required',
+            'biologi' => 'required'
+        ]);
+
+        $formFields['nilai'] = ($formFields['matematika'] + $formFields['kimia'] + $formFields['fisika'] + $formFields['biologi']) / 4;
+
+        Siswa::create($formFields);
+
+        return redirect()->back();
     }
 
     /**
